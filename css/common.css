@@ -2,6 +2,14 @@
 
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
 
+:root {--btnColor:#1B349A;}
+
+.wrap {background: linear-gradient(180deg,rgba(205, 226, 249, 1) 0%, rgba(245, 247, 250, 1) 100%); height: 100vh;}
+.header {width: 100%; position: fixed; display: flex; justify-content: space-between; align-items: center; padding: 21px 35px; box-shadow: 0 5px 4px rgba(0, 0, 0, 0.12); border: 1px solid #FFFFFF;}
+.header .logout_box {display: flex; flex-direction: column; align-items: center; gap: 2px;}
+.header .logout_box p {font-size: 14px; font-weight: 500; line-height: 150%;}
+.header .logout_box img {cursor: pointer;}
+
 /* 초기화 */
 *{word-break: keep-all !important;}
 html {overflow-y:scroll; font-size: 16px;background: #fff;font-family: 'Pretendard'; width: 100%;}
