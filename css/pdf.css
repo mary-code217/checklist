@@ -122,3 +122,117 @@
     font-weight: 500;
     padding-right: 30px;
 }
+
+.report-evidence {
+    text-align: center;
+}
+
+.report-evidence h2 {
+    display: inline-block;
+    font-size: 34px;
+    font-weight: 800;
+    border-bottom: 3px solid #000;
+    margin-bottom: 70px;
+    line-height: 100%;
+}
+
+.report-evidence h3 {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 0 15px;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.report-evidence h3 span {
+    margin-top: 2px;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border-radius: 8px;
+    border: 1px solid #171717;
+}
+
+.machine_table {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 40px;
+    height: 360px;
+}
+
+.machine_table tr:first-child {
+    border-top: 3px solid #171717;
+    border-bottom: 3px solid #171717;
+    padding: 5px 0;
+}
+
+.machine_table th {
+    border-right: 1px solid #171717;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.machine_table tr:last-child {
+    border-top: 3px solid #171717;
+    border-bottom: 3px solid #171717;
+    background: rgba(194, 174, 233, 0.6);
+    font-weight: bold;
+}
+
+.machine_table tr td:nth-child(1) {
+    border-top: 1px solid #171717;
+}
+
+.machine_table th:last-child {
+    border-right: none;
+}
+
+.machine_table td {
+    border-right: 1px solid #171717;
+}
+
+.machine_table .remark {
+    border-right: none;
+}
+
+.report-evidence dl {
+    display: flex;
+    align-items: center;
+}
+
+.report-evidence .dl_01 {
+    border-top: 3px solid #171717;
+}
+
+.report-evidence dl dt {
+    min-width: 67.55px;
+    background: rgba(194, 174, 233, 0.6);
+    height: -webkit-fill-available;
+    display: grid;
+    align-items: center;
+    justify-self: center;
+    font-size: 16px;
+    font-weight: 600;
+    border-left: 3px solid #171717;
+}
+
+.report-evidence dl dd {
+    width: 100%;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.report-evidence dl:first-child dd {
+    padding: 10px;
+}
+
+.report-evidence .img_box dd {
+    height: 400px;
+}
+
+.report-evidence dl:last-child dd {
+    padding: 10px;
+}
