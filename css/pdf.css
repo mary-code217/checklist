@@ -197,9 +197,19 @@
     border-right: none;
 }
 
+.report-evidence .atc {
+    border: 3px solid #171717;
+    margin-bottom: 10px;
+}
+
 .report-evidence dl {
     display: flex;
     align-items: center;
+    border-bottom: 1px dotted #171717;
+}
+
+.report-evidence dl:last-child {
+    border-bottom: none;
 }
 
 .report-evidence .dl_01 {
@@ -215,7 +225,6 @@
     justify-self: center;
     font-size: 16px;
     font-weight: 600;
-    border-left: 3px solid #171717;
 }
 
 .report-evidence dl dd {
@@ -229,6 +238,10 @@
     padding: 10px;
 }
 
+.report-evidence dt:first-child {
+    border-right: 1px dotted #171717;
+}
+
 .report-evidence .img_box dd {
     height: 400px;
 }
@@ -236,3 +249,4 @@
 .report-evidence dl:last-child dd {
     padding: 10px;
 }
+
