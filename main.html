@@ -47,7 +47,7 @@
                     <tr>
                         <td><input type="checkbox"></td>
                         <td>0001</td>
-                        <td>2025년 3분기 보안점검 체크리스트</td>
+                        <td class="pop-btn1">2025년 3분기 보안점검 체크리스트</td>
                         <td>작성 중</td>
                         <td>2025. 10. 30</td>
                     </tr>
@@ -124,5 +124,113 @@
             </div>
         </div>
     </div>
+
+    <div id="popup1" class="pop_wrap">
+        <div class="pop-inner checklist-modal">
+            <!-- 상단 헤더 영역 -->
+            <div class="checklist-menu-header">
+                <div class="title-wrap">
+                    <h3 class="checklist-title">점검 메뉴</h3>
+                    <p class="checklist-sub">해당 점검에서 진행할 작업을 선택하세요.</p>
+                </div>
+
+                <!-- 전체 상태 배지 (예: 작성중 / 점검완료) -->
+                <div class="status-badge status-draft" id="modalStatus">
+                    작성중
+                </div>
+            </div>
+
+            <!-- 기본 정보 영역 (제목 / 점검일시 / 점검자 정도) -->
+            <div class="checklist-meta">
+                <dl>
+                    <dt>제목</dt>
+                    <dd id="modalTitle">[점검 제목 표시 영역]</dd>
+                </dl>
+                <dl>
+                    <dt>점검일시</dt>
+                    <dd id="modalInspectedAt">2025-11-22 10:30</dd>
+                </dl>
+                <dl>
+                    <dt>점검자</dt>
+                    <dd id="modalInspector">홍길동</dd>
+                </dl>
+            </div>
+
+            <!-- 메뉴 카드 3개 -->
+            <div class="checklist-menu-grid">
+                <!-- STEP1 : 관리/물리 점검 -->
+                <button type="button"
+                        class="menu-card step-card step1 st_not"
+                        id="btnStep1">
+                    <div class="menu-card-main">
+                        <span class="menu-label">관리 / 물리 점검</span>
+                        <span class="step-badge">STEP 1</span>
+                    </div>
+                    <p class="menu-desc">
+                        1~15항목, 하위항목별 점검 및 사진 최대 4장 첨부가능
+                    </p>
+                    <span class="step-status-label">미작성</span>
+                </button>
+
+                <!-- STEP2 : 기술 점검 -->
+                <button type="button"
+                        class="menu-card step-card step2 st_not"
+                        id="btnStep2">
+                    <div class="menu-card-main">
+                        <span class="menu-label">기술 점검</span>
+                        <span class="step-badge">STEP 2</span>
+                    </div>
+                    <p class="menu-desc">
+                        1~10항목, 전체 항목에 대한 사진 최대 4장 첨부가능
+                    </p>
+                    <span class="step-status-label">미작성</span>
+                </button>
+
+                <!-- 내보내기 -->
+                <button type="button"
+                        class="menu-card export-card disabled"
+                        id="btnExport">
+                    <div class="menu-card-main">
+                        <span class="menu-label">내보내기</span>
+                        <span class="export-badge">PDF / WORD</span>
+                    </div>
+                    <p class="menu-desc">
+                        점검이 완료되면 인쇄(PDF 저장) 및 워드 양식으로 내보낼 수 있습니다.
+                    </p>
+                    <span class="step-status-label export-status-label">
+                        점검완료 후 사용 가능
+                    </span>
+                </button>
+            </div>
+
+            <!-- 닫기 버튼 -->
+            <div class="pop-close" onclick="pop_close();">✕</div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            for (let i = 1; i <= 33; i++) {
+                const buttons = document.querySelectorAll('.pop-btn' + i);
+                const popup   = document.getElementById('popup' + i);
+
+                if (!popup || buttons.length === 0) continue;
+
+                buttons.forEach(function (btn) {
+                    btn.addEventListener('click', function () {
+                        popup.style.display = 'block';
+                    });
+                });
+            }
+        });
+
+        function pop_close() {
+            for (let i = 1; i <= 33; i++) {
+                const popup = document.getElementById('popup' + i);
+                if (!popup) continue;
+
+                popup.style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>

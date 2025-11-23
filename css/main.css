@@ -57,3 +57,314 @@ input[type="checkbox"]:checked::after {content: '✓'; color: #fff; font-size: 1
     .list_main table .table_head th {font-size: 14px;}
     .list_main table td {font-size: 12px;}
 }
+
+/* ===== 공통 모달 레이아웃 수정 ===== */
+.pop_wrap {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgb(0, 0, 0, 0.3);
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+}
+
+/* 기존 .pop-inner를 이걸로 교체 */
+.pop_wrap .pop-inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 650px;
+    max-height: 80vh;      /* 내용이 많을 때 최대 높이 제한 */
+    padding: 24px 18px;
+    background: #fff;
+    border-radius: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;       /* 내용이 넘치면 안쪽에서 스크롤 */
+}
+
+.pop-close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 30px;
+    height: 30px;
+    font-size: 24px;
+    text-align: center;
+}
+
+/* ===== 체크리스트 모달 내부 레이아웃 ===== */
+.checklist-modal {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    box-sizing: border-box;
+}
+
+/* 상단 헤더 (제목 + 상태 배지) */
+.checklist-menu-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.checklist-menu-header .title-wrap {
+    min-width: 0;
+}
+
+.checklist-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0 0 4px;
+}
+
+.checklist-sub {
+    margin: 0;
+    font-size: 13px;
+    color: #777;
+}
+
+/* 전체 상태 배지 (작성중 / 점검중 / 점검완료 등) */
+.status-badge {
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.status-draft {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.status-progress {
+    background: #e3f2fd;
+    color: #1565c0;
+}
+
+.status-done {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+/* 점검 정보 메타 영역 (제목 / 점검일시 / 점검자 등) */
+.checklist-meta {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px 12px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    background: #f8f9fb;
+    font-size: 13px;
+}
+
+.checklist-meta dl {
+    margin: 0;
+}
+
+.checklist-meta dt {
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 2px;
+}
+
+.checklist-meta dd {
+    margin: 0;
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 메뉴 카드 영역(기본: 한 줄 1개) */
+.checklist-menu-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+/* 공통 카드 버튼 스타일 */
+.menu-card {
+    position: relative;
+    width: 100%;
+    text-align: left;
+    padding: 14px 14px 12px;
+    border-radius: 14px;
+    border: 1px solid #e1e4ea;
+    background: #fff;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: box-shadow 0.15s ease, transform 0.15s ease,
+                border-color 0.15s ease, background 0.15s ease;
+}
+
+.menu-card:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+}
+
+.menu-card-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+.menu-label {
+    font-size: 15px;
+    font-weight: 700;
+    color: #222;
+}
+
+/* STEP 배지 */
+.step-badge {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 999px;
+    background: #e3f2fd;
+    color: #1565c0;
+}
+
+/* 내보내기 배지 */
+.export-badge {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 999px;
+    background: #f1f3f5;
+    color: #444;
+}
+
+/* 설명 텍스트 */
+.menu-desc {
+    margin: 0 0 8px;
+    font-size: 12px;
+    color: #666;
+}
+
+/* 우측 하단 상태 라벨 */
+.step-status-label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 999px;
+}
+
+/* 내보내기 상태 라벨 */
+.export-status-label {
+    background: #f1f3f5;
+    color: #666;
+}
+
+/* STEP1/2 상태 색깔 (st_not, st_edit, st_done) */
+.step-card.st_not {
+    border-color: #e0e0e0;
+    background: #fafafa;
+}
+
+.step-card.st_not .step-status-label {
+    background: #eee;
+    color: #777;
+}
+
+.step-card.st_edit {
+    border-color: #ffb74d;
+    background: #fff8e1;
+}
+
+.step-card.st_edit .step-status-label {
+    background: #ffe0b2;
+    color: #e65100;
+}
+
+.step-card.st_done {
+    border-color: #81c784;
+    background: #e8f5e9;
+}
+
+.step-card.st_done .step-status-label {
+    background: #a5d6a7;
+    color: #1b5e20;
+}
+
+/* 내보내기 비활성 상태 */
+.export-card.disabled {
+    opacity: 0.5;
+    cursor: default;
+    pointer-events: none;
+}
+
+/* ===== 반응형 : 태블릿/가로/세로 ===== */
+
+/* 태블릿 세로 모드 (portrait) */
+@media (min-width: 768px) and (orientation: portrait) {
+    .pop_wrap .pop-inner {
+        width: 85%;
+        max-width: 720px;
+        max-height: 85vh;
+        padding: 28px 22px;
+    }
+
+    .checklist-meta {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        font-size: 13px;
+    }
+
+    .checklist-menu-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .menu-card.export-card {
+        grid-column: 1 / 3;  /* STEP1/2는 위에 2개, 내보내기는 전체 폭 */
+    }
+}
+
+/* 중간 폭(작은 태블릿 가로/세로) – 2열 유지 */
+@media (min-width: 820px) and (max-width: 1023px) {
+    .pop_wrap .pop-inner {
+        width: 80%;
+        max-width: 800px;
+    }
+
+    .checklist-menu-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .menu-card.export-card {
+        grid-column: 1 / 3;
+    }
+}
+
+/* 태블릿 가로 모드 (권장) */
+@media (min-width: 1024px) and (orientation: landscape) {
+    .pop_wrap .pop-inner {
+        width: 70%;
+        max-width: 900px;
+        max-height: 80vh;
+        padding: 32px 28px;
+    }
+
+    .checklist-menu-header .checklist-title {
+        font-size: 22px;
+    }
+
+    .checklist-menu-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    /* 가로 모드에선 3개를 한 줄에 나란히 */
+    .menu-card.export-card {
+        grid-column: auto;
+    }
+}
